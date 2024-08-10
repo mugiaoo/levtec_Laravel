@@ -9,7 +9,9 @@ class PostController extends Controller
 {
         public function index(Post $post)
     {
-        return view('posts.index')->with(['posts' => $post->get()]); //posts（配列）でviewにデータを渡す
+        //return view('posts.index')->with(['posts' => $post->getByLimit()]); //posts（配列）でviewにデータを渡す
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit(1)]);
+        
     }
 }
 
