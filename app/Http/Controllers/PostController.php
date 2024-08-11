@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
-class PostController extends Controller
-{
-        public function index(Post $post)
-    {
+class PostController extends Controller{
+    
+    public function index(Post $post){
         //return view('posts.index')->with(['posts' => $post->getByLimit()]); //posts（配列）でviewにデータを渡す
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit(5)]);
     }
@@ -16,6 +15,10 @@ class PostController extends Controller
     public function show(Post $post){
         //dd($post); データの中身を見るattributesのところ
         return view('posts.show')->with(['post' => $post]);
+    }
+    
+    public function create(){
+        return view('posts.create');
     }
 }
 
