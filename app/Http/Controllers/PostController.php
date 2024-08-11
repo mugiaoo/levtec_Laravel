@@ -11,7 +11,11 @@ class PostController extends Controller
     {
         //return view('posts.index')->with(['posts' => $post->getByLimit()]); //posts（配列）でviewにデータを渡す
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit(5)]);
-        
+    }
+    
+    public function show(Post $post){
+        //dd($post); データの中身を見るattributesのところ
+        return view('posts.show')->with(['post' => $post]);
     }
 }
 
