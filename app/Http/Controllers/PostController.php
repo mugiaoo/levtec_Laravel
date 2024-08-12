@@ -20,6 +20,13 @@ class PostController extends Controller{
     public function create(){
         return view('posts.create');
     }
+    
+    public function store(Request $request, Post $post){
+        //dd($request->all());
+        $input = $request['post'];
+        $post->fill($input)->save(); //fill() メソッドは、$input 配列のキーとマッチするモデルの属性を設定 fill()->save() はcreate()と一緒
+        return redirect('/posts/' . $post->id);
+    }
 }
 
 ?>
