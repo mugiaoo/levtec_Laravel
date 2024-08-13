@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller{
@@ -21,7 +22,7 @@ class PostController extends Controller{
         return view('posts.create');
     }
     
-    public function store(Request $request, Post $post){
+    public function store(PostRequest $request, Post $post){
         //dd($request->all());
         $input = $request['post'];
         $post->fill($input)->save(); //fill() メソッドは、$input 配列のキーとマッチするモデルの属性を設定 fill()->save() はcreate()と一緒
