@@ -28,6 +28,16 @@ class PostController extends Controller{
         $post->fill($input)->save(); //fill() メソッドは、$input 配列のキーとマッチするモデルの属性を設定 fill()->save() はcreate()と一緒
         return redirect('/posts/' . $post->id);
     }
+    
+    public function edit(Post $post){
+        return view('posts.edit')->with(['post' => $post]);
+    }
+    
+    public function update(PostRequest $request, Post $post){
+        $input_post = $request['post'];
+        $post->fill($input_post)->save();
+        return redirect('/posts/' . $post->id);
+    }
 }
 
 ?>
