@@ -21,7 +21,12 @@ class Post extends Model
         //更新日順に->10個とってくるよ
         return $this->orderby('updated_at', 'DESC')->paginate($limit_count); //pagenat版
     }
+    
+    // Categoryに対するリレーション
+    //「1対多」の関係なので単数系に
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
-
 ?>
 
