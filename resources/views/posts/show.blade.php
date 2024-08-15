@@ -14,7 +14,9 @@
         <div class="content">
             <div class="content_post">
                 <h3>本文</h3>
-                <p>{{ $post->body }}</p>    
+                <p>{{ $post->body }}</p>
+                <!-- カテゴリー名を表示 -->
+                <a href="">{{ $post->category->name }}</a>
             </div>
         </div>
         <div class="edit">
