@@ -14,14 +14,21 @@ class Post extends Model
     protected $fillable = [ //保存機能
         'title',
         'body',
+        'category_id'
     ];
     
     public function getPaginateByLimit(int $limit_count = 5){
         //return $this->orderby('updated_at', 'DESC')->limit($limit_count)->get(); //limitで10個とってくるよ　orderby(並び替え)
         //更新日順に->10個とってくるよ
-        return $this->orderby('updated_at', 'DESC')->paginate($limit_count); //pagenat版
+        //return $this->orderby('updated_at', 'DESC')->paginate($limit_count); //pagenat版
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    // Categoryに対するリレーション
+    //「1対多」の関係なので単数系に
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }
-
 ?>
 
