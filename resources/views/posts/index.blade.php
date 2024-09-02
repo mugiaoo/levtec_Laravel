@@ -24,6 +24,15 @@
                     </form>
                 </div>
             @endforeach
+            <div>
+            @foreach($questions as $question)
+                <div>
+                    <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                        {{ $question['title'] }}
+                    </a>
+                </div>
+            @endforeach
+    </div>
         </div>
         <div class='paginate'>{{ $posts->links()}}</div>
         <!--ボタンが押されると，jacvascriptが動いて，popupが表示される-->
