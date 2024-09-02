@@ -9,6 +9,9 @@
     </head>
     <body class="antialiased">
         <h1>Blog Name</h1>
+        @if(Auth::check())
+            <p>Logged in as: {{ Auth::user()->name }}</p>
+        @endif
         <a href= '/posts/create'>create</a>
         <div class = 'posts'>
             @foreach($posts as $post)
